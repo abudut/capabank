@@ -1,0 +1,40 @@
+body {
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  header{
+    background-color: #0e3060;
+    color: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .material-icons{
+    color: #ffff;
+    font-size: xx-large;
+    margin-left: 20px;
+    margin-top: 3px;
+ 
+  }
+
+  .material-icons:hover{
+    color: red;
+ 
+  }
+
+  footer{
+    background-color: #0e3060;
+    color: #ffff;
+    padding: 20px;
+    text-align: right;
+  }
+  
+  .df{
+    display: flex;
+    align-items: center;
+  }
+
+ 
