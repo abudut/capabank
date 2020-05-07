@@ -1,7 +1,8 @@
 <?php
 	class User extends CI_Model {
 
-		private $dni;
+		private $id;
+		private $user;
 		private $name;
 		private $surname;
 		private $password;
@@ -11,7 +12,7 @@
 
 
 		public function __construct() {
-			$this->dni = '';
+			$this->user = '';
 			$this->name = '';
 			$this->surname = '';
 			$this->password = '';
@@ -23,8 +24,13 @@
 			$this->load->database('capabankuth');	
 		}
 
-		public function getDNI() {
-			return $this->dni;
+		public function getId() {
+			return $this->id;
+		}
+
+
+		public function getUsername() {
+			return $this->user;
 		}
 
 		public function getName() {
@@ -51,9 +57,9 @@
 			return $this->active;
 		}
 
-		public function getUser($dni) {
+		public function getUser($user) {
 
-			$condition = array('username' => $dni);
+			$condition = array('username' => $user);
 			$query = $this->db->get_where('users', $condition);
 
 
@@ -73,9 +79,9 @@
 			return $users;
 		}
 
-		public function addNewUser($dni, $name, $surname,$password,$email,$phone,$active) {
+		public function addNewUser($user, $name, $surname,$password,$email,$phone,$active) {
 			$data = array(
-				'username' => $dni,
+				'username' => $user,
 				'first_name' => $name,
 				'last_name' => $surname,	
 				'password' => $password,
@@ -85,6 +91,19 @@
 			
 			);
 			$this->db->insert('users', $data);
+		}
+
+		public function updateState($id,$status){
+
+			if($status == '1'){
+				$user_status = '0';
+			}
+			else{
+				$user_status = '1';
+			}
+			$data = array('active' => $user_status );
+			$this->db->get_where('id',$id);
+			$this->db->update('users', $data); 	
 		}
 
 		
@@ -98,7 +117,8 @@
 
 		public function toArray() {
 			return array(
-				'username' => $this->dni,
+				'id' => $this->id,
+				'username' => $this->user,
 				'first_name' => $this->name,
 				'last_name' => $this->surname,
 				'password' => $this->password,
@@ -110,8 +130,8 @@
 
 		private function createUserFromRawObject($data) {
 			$user = new User();
-
-			$user->dni = $data->username;
+			$user->id = $data->id;
+			$user->user = $data->username;
 			$user->name = $data->first_name;
 			$user->surname = $data->last_name;
 			$user->password = $data->password;
