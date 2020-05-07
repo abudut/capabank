@@ -11,7 +11,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#">Mis Cuentas</a>
+        <a class="nav-link" href="cuentas">Mis Cuentas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Transferencias</a>

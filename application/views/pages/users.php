@@ -1,7 +1,7 @@
 		<div class="class="lead">
 			<h3>Users</h3>
 
-			<table class="w3-table">
+			<table class="table table-striped">
 				<tr>
 					<th>Usuari</th>
 					<th>Nom</th>

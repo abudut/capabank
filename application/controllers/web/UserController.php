@@ -32,9 +32,8 @@
 		}
 
 		public function getUser(){
-			$dni= $this->input->post('buser');
+		
 			$headerData['uname'] = $this->session->userdata('username');
-			$contentData['users'] = $this->user->getUser($dni);
 			$footerData['date'] = date('d/m/Y');
 			$this->load->view('templates/header',$headerData);
 			$this->load->view('templates/footer', $footerData);
