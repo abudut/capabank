@@ -54,6 +54,7 @@ $route['login'] = 'web/SessionController/login';
 $route['about'] = 'web/AboutController/view';
 $route['home'] = 'web/HomeController/view';
 $route['users'] = 'web/UserController/index';
+$route['users/updateStatus'] = 'web/UserController/updateStatus';
 $route['cuentas'] = 'web/CuentaController/index';
 $route['users/add'] = 'web/UserController/addNewUser';
 $route['users/find'] = 'web/UserController/GetUser';

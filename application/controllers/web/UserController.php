@@ -41,7 +41,7 @@ class UserController extends CI_Controller
 		$this->load->view('templates/footer', $footerData);
 	}
 
-	public function userStatus()
+	public function updateStatus()
 	{
 		//get hidden values in variables
 		$id = $this->input->post('id');
@@ -51,10 +51,10 @@ class UserController extends CI_Controller
 		$this->user->updateState($id, $status);
 
 		//Create success measage
-		$this->session->set_flashdata('msg', "User status has been changed successfully.");
+		$this->session->set_flashdata('msg', "El estado del usuario ha canviado satisfactoriamente.");
 		$this->session->set_flashdata('msg_class', 'alert-success');
 
-		return redirect('users');
+		redirect('users');
 	}
 
 	public function addNewUser()

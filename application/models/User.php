@@ -102,7 +102,7 @@
 				$user_status = '1';
 			}
 			$data = array('active' => $user_status );
-			$this->db->get_where('id',$id);
+			$this->db->where('id',$id);
 			$this->db->update('users', $data); 	
 		}
 
@@ -138,7 +138,6 @@
 			$user->email = $data->email;
 			$user->phone = $data->phone;
 			$user->active = $data->active;
-
 			return $user;
 		}
 

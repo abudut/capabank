@@ -9,6 +9,7 @@
 					<th>Email</th>
 					<th>Grupo</th>
 					<th>Estado</th>
+					<th>Accion</th>
 				</tr>
 				<?php
 				foreach ($users as $user) {
@@ -25,10 +26,10 @@
 					} else {
 						echo '<button class="btn btn-danger user_status" uid="' . $user->getId() . '"  ustatus="'.$user->getActive().'">Inactivo</button>';
 					}
-					" </td>
+					"</td>
+					<td><button class='btn btn-warning'>Editar</button></td>
 			
-							</tr>
-						";
+							</tr>";
 				}
 				?>
 
@@ -58,12 +59,12 @@
 				<div class="modal-dialog modal-sm">
 
 				
-					<form action="<?php echo base_url(); ?>users/userStatus" method="post">
+					<form action="<?php echo base_url(); ?>users/updateStatus" method="post">
 						<div class="modal-content">
 
 							<div class="modal-header" style="height: 150px;">
 
-								<h4 style="margin-top: 50px;text-align: center;">Seguro que quieres canviar el estadod del usuario?</h4>
+								<h4 style="margin-top: 50px;text-align: center;">Seguro que quieres canviar el estado del usuario?</h4>
 
 								
 								<input type="hidden" name="id" id="user_id" value="">
