@@ -57,11 +57,10 @@
 			return $this->active;
 		}
 
-		public function getUser($user) {
+		public function getUser($id) {
 
-			$condition = array('username' => $user);
+			$condition = array('id' => $id);
 			$query = $this->db->get_where('users', $condition);
-
 
 			if($query->num_rows() != 1) return null;
 			else return $this->createUserFromRawObject($query->result()[0]);
@@ -93,6 +92,19 @@
 			$this->db->insert('users', $data);
 		}
 
+		public function updateUser($id,$user, $name, $surname,$password,$email,$phone){
+			$data = array(
+				'username' => $user,
+				'first_name' => $name,
+				'last_name' => $surname,
+				'password' => $password,	
+				'email' => $email,
+				'phone' => $phone,
+			);
+			$this->db->where('id',$id);
+			$this->db->update('users', $data);
+		}
+
 		public function updateState($id,$status){
 
 			if($status == '1'){
@@ -104,15 +116,6 @@
 			$data = array('active' => $user_status );
 			$this->db->where('id',$id);
 			$this->db->update('users', $data); 	
-		}
-
-		
-
-		public function checkClientEmail($email) {
-			$data = array('email' => $email);
-			$query = $this->db->get_where('username', $data);
-			if($query->num_rows() != 1) return false;
-			return true;
 		}
 
 		public function toArray() {

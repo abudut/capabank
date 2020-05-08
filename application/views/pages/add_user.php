@@ -1,5 +1,5 @@
-		<div class="w3-container">
-			<h3>Users</h3>
+		<div class="container-fluid">
+			<h3>Agreagr Usuario</h3>
 
 			<form method="post">
 				<label>Usuario</label>

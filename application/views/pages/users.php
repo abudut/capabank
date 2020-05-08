@@ -1,40 +1,7 @@
-		<div class="class=" lead">
-			<h3>Users</h3>
+	
 
-			<table class="table table-striped">
-				<tr>
-					<th>Usuari</th>
-					<th>Nom</th>
-					<th>cognoms</th>
-					<th>Email</th>
-					<th>Grupo</th>
-					<th>Estado</th>
-					<th>Accion</th>
-				
-				</tr>
-				<?php
-				foreach ($users as $user) {
-					echo "
-							<tr>
-								<td> " . $user->getUsername() . " </td>
-								<td> " . $user->getName() . " </td>
-								<td> " . $user->getSurname() . " </td>
-								<td> " . $user->getEmail() . " </td>
-								<td>    </td>
-								<td> ";
-					if ($user->getActive() == 1) {
-						echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';
-					} else {
-						echo '<button class="btn btn-danger user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Inactivo</button>';
-					}
-					"</td>
-							<td><button class='btn btn-warning'>Editar</button></td>
-					
-							</tr>";
-				}
-				?>
-
-			</table>
+		<div class="lead container-fluid">
+			<h3>Lista de usuarios</h3>
 
 
 			<script type="text/javascript">
@@ -95,8 +62,46 @@
 
 			<?php } ?>
 
+			<table class="table table-striped">
+				<tr>
+					<th>Usuari</th>
+					<th>Nom</th>
+					<th>cognoms</th>
+					<th>Email</th>
+					<th>Grupo</th>
+					<th>Estado</th>
+					<th>Accion</th>
 
-			<a class="btn btn-primary" href="<?php echo base_url('users/add'); ?>">Afegir un nou usuari</a>
+				</tr>
+				<?php
+				foreach ($users as $user) {
+					echo "
+							<tr>
+								<td> " . $user->getUsername() . " </td>
+								<td> " . $user->getName() . " </td>
+								<td> " . $user->getSurname() . " </td>
+								<td> " . $user->getEmail() . " </td>
+								<td>  </td>
+							
+							
+								<td>";
+					if ($user->getActive() == 1) {
+						echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';
+					} else {
+						echo '<button class="btn btn-danger user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Inactivo</button>
+						';
+					}
+
+					echo '</td><td><a href="'.base_url() .'users/editUser/'. $user->getId() . '"><button class="btn btn-warning">Editar</button></a> ';
+					echo "<button class='btn btn-danger'>Eliminar</button></td>
+							</tr>";
+				}
+				?>
+
+			</table>
+
+
+			<a class="btn btn-primary" href="<?php echo base_url('users/add'); ?>">Agragar usuario</a>
 
 
 		</div>

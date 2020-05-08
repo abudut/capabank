@@ -12,6 +12,8 @@ class UserController extends CI_Controller
 
 		//Càrrega dels helpers
 		$this->load->helper('url');
+		$this->load->helper('form');
+
 
 		//Càrrega de les llibreries
 		$this->load->library('ion_auth');
@@ -41,20 +43,41 @@ class UserController extends CI_Controller
 		$this->load->view('templates/footer', $footerData);
 	}
 
+	public function editUser(){
+		$id = $this->uri->segment('3');
+		$headerData['uname'] = $this->session->userdata('username');
+		$contentData['users'] = $this->user->getUser($id);
+		$footerData['date'] = date('d/m/Y');
+	
+		$this->load->view('templates/inHeader', $headerData);
+		$this->load->view('templates/bcrm1');
+		$this->load->view('pages/edit_user',$contentData);
+		$this->load->view('templates/footer', $footerData);
+		$this->user->updateUser(
+			$id,
+			$this->input->post('dni'),
+			$this->input->post('name'),
+			$this->input->post('surname'),
+			$this->input->post('password'),
+			$this->input->post('email'),
+			$this->input->post('phone')
+		);
+
+	
+	}
+
 	public function updateStatus()
 	{
-		//get hidden values in variables
+	
 		$id = $this->input->post('id');
 		$status = $this->input->post('status');
 
-		//check condition
 		$this->user->updateState($id, $status);
 
-		//Create success measage
 		$this->session->set_flashdata('msg', "El estado del usuario ha canviado satisfactoriamente.");
 		$this->session->set_flashdata('msg_class', 'alert-success');
 
-		redirect('users');
+		
 	}
 
 	public function addNewUser()

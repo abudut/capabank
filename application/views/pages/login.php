@@ -1,4 +1,4 @@
-		<div class="w3-container">
+		<div class="container">
 
 			<form method="post">
 				<div class="form-group">
@@ -20,7 +20,7 @@
 			echo validation_errors();
 			if (isset($error)) {
 				echo "
-						<div class='w3-red'>
+						<div class='text-danger'>
 							<h5>" . $error . "</h5>
 						</div>
 					";

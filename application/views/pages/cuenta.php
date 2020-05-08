@@ -1,4 +1,4 @@
-<div class="class="lead">
+<div class="lead container-fluid">
 			<h3>Cuentas</h3>
 
 			<table class="table table-striped">
