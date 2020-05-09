@@ -11,7 +11,6 @@
 				<div class="modal-content">
 
 					<div class="modal-header" style="height: 150px;">
-
 						<h4 style="margin-top: 50px;text-align: center;">Seguro que quieres canviar el estado del usuario?</h4>
 
 
@@ -36,6 +35,33 @@
 
 	</div>
 
+
+<form action="<?php echo base_url(); ?>users/deleteUser/<?php foreach ($users as $us) {
+	$id=$us->getId();} 
+	echo $id?>" method="post">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Borrar usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Seguro que quieres eliminar el usuario?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+        <button type="submit" class="btn btn-primary">SI</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
 	<?php if ($error = $this->session->flashdata('msg')) { ?>
 
 		<h3 class="text-success"><?php echo  $error; ?></h3>
@@ -50,8 +76,9 @@
 				<th scope="col">Nombre</th>
 				<th scope="col">Apellidos</th>
 				<th scope="col">Email</th>
+				<th scope="col">Telefono</th>
 				<th scope="col">Grupo</th>
-				<th scope="col" h>Estado</th>
+				<th scope="col">Estado</th>
 				<th scope="col">Accion</th>
 
 			</tr>
@@ -66,9 +93,8 @@
 								<td> " . $user->getName() . " </td>
 								<td> " . $user->getSurname() . " </td>
 								<td> " . $user->getEmail() . " </td>
+								<td> " . $user->getPhone() . " </td>
 								<td>  </td>
-							
-							
 								<td>";
 			if ($user->getActive() == 1) {
 				echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';
@@ -78,13 +104,15 @@
 			}
 
 			echo '</td><td><a href="' . base_url() . 'users/editUser/' . $user->getId() . '"><button class="btn btn-warning">Editar</button></a> ';
-			echo '<a href="' . base_url() . 'users/deleteUser/' . $user->getId() . '"><button class="btn btn-danger">Elimnar</button></a></td>
+			echo '<button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" >Elimnar</button></td>
 							</tr>
 							</tbody>';
 		}
 		?>
 
 	</table>
+
+	
 
 	<a class="btn btn-primary" href="<?php echo base_url('users/add'); ?>">Agragar usuario</a>
 

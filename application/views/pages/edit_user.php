@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<h3>Editar Usuario</h3>
 
-	<form method="post" action="<?php echo base_url(); ?>users/updateUser/<?php echo $users->getId(); ?>">
+	<form method="post" action="<?php echo base_url(); ?>users/updateUser/<?php echo $users->getId();?>">
 
 		<label>Usuario</label>
 		<input type="text" name="edni" class="form-control" value="<?php echo $users->getUsername() ?>">

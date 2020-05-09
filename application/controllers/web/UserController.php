@@ -67,14 +67,14 @@ class UserController extends CI_Controller
 			$this->input->post('eemail'),
 			$this->input->post('ephone')
 		);
-		if($res>0) {
-			$this->session->set_flashdata('msg', "El usuario se ha actualizado satisfactoriamente.");
+		if($res<1) {
+			$this->session->set_flashdata('msg', "El usuario se ha actualizado exitosamente.");
 			$this->session->set_flashdata('msg_class', 'alert-success');
 		} else {
 			$this->session->set_flashdata('msg', "El usuario no se ha podido actualizar.");
 			$this->session->set_flashdata('msg_class', 'alert-danger');
 		}
-		redirect('users');
+		redirect('users','refresh');
 	}
 
 	public function updateStatus()
@@ -82,7 +82,7 @@ class UserController extends CI_Controller
 		$id = $this->input->post('id');
 		$status = $this->input->post('status');
 		$this->user->updateState($id, $status);
-		$this->session->set_flashdata('msg', "El estado del usuario se ha canviado satisfactoriamente.");
+		$this->session->set_flashdata('msg', "El estado del usuario se ha canviado exitosamente.");
 		$this->session->set_flashdata('msg_class', 'alert-success');
 		redirect('users');
 	}
@@ -90,7 +90,7 @@ class UserController extends CI_Controller
 	public function deleteUser(){
 		$id = $this->uri->segment('3');
 		$this->user->deleteUser($id);
-		redirect('users');
+		redirect('users','refresh');
 
 	}
 
@@ -134,3 +134,4 @@ class UserController extends CI_Controller
 		}
 	}
 }
+?>
