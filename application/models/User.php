@@ -78,16 +78,14 @@
 			return $users;
 		}
 
-		public function addNewUser($user, $name, $surname,$password,$email,$phone,$active) {
+		public function addNewUser($user, $name, $surname,$password,$email,$phone) {
 			$data = array(
 				'username' => $user,
 				'first_name' => $name,
 				'last_name' => $surname,	
 				'password' => $password,
 				'email' => $email,
-				'phone' => $phone,
-				'active' => $active
-			
+				'phone' => $phone,		
 			);
 			$this->db->insert('users', $data);
 		}
@@ -115,7 +113,7 @@
 			}
 			$data = array('active' => $user_status );
 			$this->db->where('id',$id);
-			$this->db->update('users', $data); 	
+			$this->db->update('users', $data); 
 		}
 
 		public function toArray() {

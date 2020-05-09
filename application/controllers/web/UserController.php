@@ -43,39 +43,53 @@ class UserController extends CI_Controller
 		$this->load->view('templates/footer', $footerData);
 	}
 
-	public function editUser(){
+	public function editUser()
+	{
 		$id = $this->uri->segment('3');
 		$headerData['uname'] = $this->session->userdata('username');
 		$contentData['users'] = $this->user->getUser($id);
 		$footerData['date'] = date('d/m/Y');
-	
 		$this->load->view('templates/inHeader', $headerData);
-		$this->load->view('templates/bcrm1');
-		$this->load->view('pages/edit_user',$contentData);
+		$this->load->view('templates/bcrm5');
+		$this->load->view('pages/edit_user', $contentData);
 		$this->load->view('templates/footer', $footerData);
-		$this->user->updateUser(
-			$id,
-			$this->input->post('dni'),
-			$this->input->post('name'),
-			$this->input->post('surname'),
-			$this->input->post('password'),
-			$this->input->post('email'),
-			$this->input->post('phone')
-		);
 
-	
+	}
+
+	public function updateUser(){
+		$id = $this->uri->segment('3');
+		$res = $this->user->updateUser(
+			$id,
+			$this->input->post('edni'),
+			$this->input->post('ename'),
+			$this->input->post('esurname'),
+			$this->input->post('epassword'),
+			$this->input->post('eemail'),
+			$this->input->post('ephone')
+		);
+		if($res>0) {
+			$this->session->set_flashdata('msg', "El usuario se ha actualizado satisfactoriamente.");
+			$this->session->set_flashdata('msg_class', 'alert-success');
+		} else {
+			$this->session->set_flashdata('msg', "El usuario no se ha podido actualizar.");
+			$this->session->set_flashdata('msg_class', 'alert-danger');
+		}
+		redirect('users');
 	}
 
 	public function updateStatus()
 	{
-	
 		$id = $this->input->post('id');
 		$status = $this->input->post('status');
-
 		$this->user->updateState($id, $status);
-
-		$this->session->set_flashdata('msg', "El estado del usuario ha canviado satisfactoriamente.");
+		$this->session->set_flashdata('msg', "El estado del usuario se ha canviado satisfactoriamente.");
 		$this->session->set_flashdata('msg_class', 'alert-success');
+		redirect('users');
+	}
+
+	public function deleteUser(){
+
+
 
 		
 	}
@@ -119,6 +133,4 @@ class UserController extends CI_Controller
 			redirect('users');
 		}
 	}
-
-
 }

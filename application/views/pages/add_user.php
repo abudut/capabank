@@ -3,22 +3,22 @@
 
 			<form method="post">
 				<label>Usuario</label>
-				<input type="text" name="dni" class="w3-input">
+				<input type="text" name="dni" class="form-control">
 
 				<label>Nom</label>
-				<input type="text" name="name" class="w3-input">
+				<input type="text" name="name"  class="form-control">
 
 				<label>Cognoms</label>
-				<input type="text" name="surname" class="w3-input">
+				<input type="text" name="surname"  class="form-control">
 
 				<label>Contraseña</label>
-				<input type="password" name="password" class="w3-input">
+				<input type="password" name="password"  class="form-control">
 
 				<label>Email</label>
-				<input type="email" name="email" class="w3-input">
+				<input type="email" name="email"  class="form-control">
 
 				<label>Telefono</label>
-				<input type="phone" name="phone" class="w3-input">
+				<input type="phone" name="phone"  class="form-control">
 
 				<div class="form-row align-items-center">
     <div class="col-auto my-1">
