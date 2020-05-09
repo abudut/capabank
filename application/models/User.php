@@ -116,6 +116,11 @@
 			$this->db->update('users', $data); 
 		}
 
+		public function deleteUser($id){
+			$this->db->where('id',$id);	
+			$this->db->delete('users');
+		}
+
 		public function toArray() {
 			return array(
 				'id' => $this->id,

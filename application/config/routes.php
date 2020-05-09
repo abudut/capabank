@@ -57,6 +57,7 @@ $route['users'] = 'web/UserController/index';
 $route['users/updateStatus'] = 'web/UserController/updateStatus';
 $route['users/editUser/(:num)'] = 'web/UserController/editUser/$1';
 $route['users/updateUser/(:num)'] = 'web/UserController/updateUser/$1';
+$route['users/deleteUser/(:num)'] = 'web/UserController/deleteUser/$1';
 $route['cuentas'] = 'web/CuentaController/index';
 $route['users/add'] = 'web/UserController/addNewUser';
 $route['default_controller'] = 'web/HomeController/view';

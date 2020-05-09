@@ -88,10 +88,10 @@ class UserController extends CI_Controller
 	}
 
 	public function deleteUser(){
+		$id = $this->uri->segment('3');
+		$this->user->deleteUser($id);
+		redirect('users');
 
-
-
-		
 	}
 
 	public function addNewUser()

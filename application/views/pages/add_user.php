@@ -5,10 +5,10 @@
 				<label>Usuario</label>
 				<input type="text" name="dni" class="form-control">
 
-				<label>Nom</label>
+				<label>Nomrbe</label>
 				<input type="text" name="name"  class="form-control">
 
-				<label>Cognoms</label>
+				<label>Apellidos</label>
 				<input type="text" name="surname"  class="form-control">
 
 				<label>Contraseña</label>
@@ -29,7 +29,7 @@
         <option value="Client">Cliente</option>
       </select>
     </div>
-				<input type="submit" value="Afegir usuari" class="w3-button">
+		<input type="submit" value="Afegir usuari" class="btn btn-primary">
 			</form>
 
 			<?php echo validation_errors(); ?>

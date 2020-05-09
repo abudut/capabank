@@ -7,8 +7,8 @@
 					<th>IBAN</th>
 					<th>Fecha</th>
 					<th>Concepte</th>
-					<th>Import</th>
-					<th>Sou</th>
+					<th>Importe</th>
+					<th>Saldo</th>
 				</tr>
                 </thead>
 				<?php

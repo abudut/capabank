@@ -1,22 +1,6 @@
-<div class="container-fluid">
+<div class="lead container-fluid">
 	<h3>Lista de usuarios</h3>
 
-	<script type="text/javascript">
-		$(document).on('click', '.user_status', function() {
-
-			var id = $(this).attr('uid');
-			var status = $(this).attr('ustatus');
-
-			$('#user_id').val(id);
-			$('#user_status').val(status);
-
-			$('#modal_popup').modal({
-				backdrop: 'static',
-				keyboard: true,
-				show: true
-			});
-		});
-	</script>
 
 	<div class="modal modal-danger fade" id="modal_popup">
 
@@ -58,13 +42,13 @@
 
 	<?php } ?>
 
-	<table class="table table-hover">
+	<table class="table table-hover table-responsive-lg">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
-				<th scope="col">Usuari</th>
-				<th scope="col">Nom</th>
-				<th scope="col">cognoms</th>
+				<th scope="col">Usuario</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellidos</th>
 				<th scope="col">Email</th>
 				<th scope="col">Grupo</th>
 				<th scope="col" h>Estado</th>
@@ -77,7 +61,7 @@
 			echo "
 					<tbody>
 							<tr>
-								<td scope='row'> " . $user->getId() . " </td>
+								<th scope='row'> " . $user->getId() . " </th>
 								<td> " . $user->getUsername() . " </td>
 								<td> " . $user->getName() . " </td>
 								<td> " . $user->getSurname() . " </td>
