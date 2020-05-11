@@ -68,7 +68,7 @@
 
 	<?php } ?>
 
-	<table class="table table-hover table-responsive-lg">
+	<table id="userlist" class="table table-hover table-responsive-lg">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
@@ -77,13 +77,16 @@
 				<th scope="col">Apellidos</th>
 				<th scope="col">Email</th>
 				<th scope="col">Telefono</th>
-				<th scope="col">Grupo</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Estado</th>
 				<th scope="col">Accion</th>
 
 			</tr>
 		</thead>
 		<?php
+			foreach ($rols as $rol) {
+				var_dump($rol->getUserId());
+			}
 		foreach ($users as $user) {
 			echo "
 					<tbody>
@@ -94,7 +97,12 @@
 								<td> " . $user->getSurname() . " </td>
 								<td> " . $user->getEmail() . " </td>
 								<td> " . $user->getPhone() . " </td>
-								<td>  </td>
+								<td>  <select  name='rol' class='custom-select mr-sm' >
+								"; echo"<option selected>Elegir Rol...</option>
+								<option value='1'>Administrador</option>
+								<option value='2'>Professional</option>
+								<option value='3'>Cliente</option>
+							  </select> </td>
 								<td>";
 			if ($user->getActive() == 1) {
 				echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';

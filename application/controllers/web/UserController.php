@@ -9,6 +9,7 @@ class UserController extends CI_Controller
 
 		//Càrrega dels models
 		$this->load->model('user');
+		$this->load->model('rol');
 
 		//Càrrega dels helpers
 		$this->load->helper('url');
@@ -28,10 +29,11 @@ class UserController extends CI_Controller
 	{
 		$headerData['uname'] = $this->session->userdata('username');
 		$contentData['users'] = $this->user->getUsers();
+		$contentDataRol['rols'] = $this->rol->getRols();
 		$footerData['date'] = date('d/m/Y');
 		$this->load->view('templates/inHeader', $headerData);
 		$this->load->view('templates/bcrm1');
-		$this->load->view('pages/users', $contentData);
+		$this->load->view('pages/users', $contentData,$contentDataRol);
 		$this->load->view('templates/footer', $footerData);
 	}
 
@@ -87,11 +89,18 @@ class UserController extends CI_Controller
 		redirect('users');
 	}
 
+	public function changeUserRol(){
+		$id = $this->input->post('id');
+		$rol = $this->input->post('rol');
+	    $this->rol->getRole($id);
+		$this->user->setUserRol($id,$rol);
+		redirect('users');
+	}
+
 	public function deleteUser(){
 		$id = $this->uri->segment('3');
 		$this->user->deleteUser($id);
 		redirect('users','refresh');
-
 	}
 
 	public function addNewUser()

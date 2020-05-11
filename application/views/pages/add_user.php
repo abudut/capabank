@@ -21,14 +21,7 @@
 				<input type="phone" name="phone"  class="form-control">
 
 				<div class="form-row align-items-center">
-    <div class="col-auto my-1">
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Elegir Rol...</option>
-        <option value="Admin">Administrador</option>
-        <option value="Pro">Professional</option>
-        <option value="Client">Cliente</option>
-      </select>
-    </div>
+  
 		<input type="submit" value="Afegir usuari" class="btn btn-primary">
 			</form>
 

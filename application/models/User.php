@@ -28,7 +28,6 @@
 			return $this->id;
 		}
 
-
 		public function getUsername() {
 			return $this->user;
 		}
@@ -65,6 +64,7 @@
 			if($query->num_rows() != 1) return null;
 			else return $this->createUserFromRawObject($query->result()[0]);
 		}
+
 
 		public function getUsers() {
 			
@@ -116,11 +116,28 @@
 			$this->db->update('users', $data); 
 		}
 
+		public function setUserRol($id,$rol){
+
+			if ($rol == 1) {
+				$user_rol='1';
+			}
+
+			if ($rol== 2) {
+				$user_rol='2';
+			}
+
+			else{
+				$user_rol='3';
+			}
+			
+			$data = array('user_id' => $id,'group_id' => $user_rol );
+			$this->db->update('users_groups', $data);
+		}
+
 		public function deleteUser($id){
 			$this->db->where('id',$id);	
 			$this->db->delete('users');
 		}
-
 		public function toArray() {
 			return array(
 				'id' => $this->id,
@@ -146,8 +163,6 @@
 			$user->active = $data->active;
 			return $user;
 		}
-
-
 	}
 
 ?>
