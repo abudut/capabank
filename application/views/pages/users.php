@@ -36,36 +36,36 @@
 	</div>
 
 
-<form action="<?php echo base_url(); ?>users/deleteUser/<?php foreach ($users as $us) {
-	$id=$us->getId();} 
-	echo $id?>" method="post">
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Borrar usuario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       Seguro que quieres eliminar el usuario?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-        <button type="submit" class="btn btn-primary">SI</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
+	<form action="<?php echo base_url(); ?>users/deleteUser/<?php foreach ($users as $us) {
+																$id = $us->getId();
+															}
+															echo $id ?>" method="post">
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Borrar usuario</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Seguro que quieres eliminar el usuario?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+						<button type="submit" class="btn btn-primary">SI</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 
 
 
 	<?php if ($error = $this->session->flashdata('msg')) { ?>
 
 		<h3 class="text-success"><?php echo  $error; ?></h3>
-
 	<?php } ?>
 
 	<table id="userlist" class="table table-hover table-responsive-lg">
@@ -84,10 +84,13 @@
 			</tr>
 		</thead>
 		<?php
-			foreach ($rols as $rol) {
-				var_dump($rol->getUserId());
-			}
+
+
 		foreach ($users as $user) {
+			$group = 0;
+			if (($user->getRol()) != null) {
+				$group = $user->getRol()->getGroupId();
+			}
 			echo "
 					<tbody>
 							<tr>
@@ -97,12 +100,32 @@
 								<td> " . $user->getSurname() . " </td>
 								<td> " . $user->getEmail() . " </td>
 								<td> " . $user->getPhone() . " </td>
-								<td>  <select  name='rol' class='custom-select mr-sm' >
-								"; echo"<option selected>Elegir Rol...</option>
-								<option value='1'>Administrador</option>
-								<option value='2'>Professional</option>
-								<option value='3'>Cliente</option>
-							  </select> </td>
+								<td>  <select name='rol' class='custom-select mr-sm' >
+								";
+			echo "
+					<option disabled='disabled'";
+			if ($group == 0) {
+				echo "selected";
+			}
+			echo "> Elegir Rol...</option>
+				<option value='1'";
+			if ($group == 1) {
+				echo "selected";
+			}
+			echo ">Administrador";
+
+			echo "</option>
+					<option value='2'";
+			if ($group == 2) {
+				echo "selected";
+			}
+			echo ">Professional  </option>
+					<option value='3'";
+			if ($group == 3) {
+				echo "selected";
+			}
+			echo ">Cliente  </option>";
+			echo " </select> </td>
 								<td>";
 			if ($user->getActive() == 1) {
 				echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';
@@ -119,9 +142,5 @@
 		?>
 
 	</table>
-
-	
-
 	<a class="btn btn-primary" href="<?php echo base_url('users/add'); ?>">Agragar usuario</a>
-
 </div>

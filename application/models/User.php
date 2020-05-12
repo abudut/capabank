@@ -1,4 +1,5 @@
 <?php
+require_once(APPPATH.'models/Rol.php');
 	class User extends CI_Model {
 
 		private $id;
@@ -9,6 +10,7 @@
 		private $email;
 		private $phone;
 		private $active;
+		private $rol;
 
 
 		public function __construct() {
@@ -19,9 +21,10 @@
 			$this->email = '';
 			$this->phone = '';
 			$this->active = '';
+			$this->rol = '';
 			
 			
-			$this->load->database('capabankuth');	
+			$this->load->database('capabankauth');	
 		}
 
 		public function getId() {
@@ -56,6 +59,10 @@
 			return $this->active;
 		}
 
+		public function getRol(){
+			return $this->rol;
+		}
+
 		public function getUser($id) {
 
 			$condition = array('id' => $id);
@@ -67,11 +74,12 @@
 
 
 		public function getUsers() {
-			
+			$rol= new Rol();
 			$query = $this->db->get('users'); 
 			$users = [];
 			foreach($query->result() as $data) {
 				$user = $this->createUserFromRawObject($data);
+				$user->rol = $rol->getRol($user->id);
 				array_push($users, $user);
 			}
 

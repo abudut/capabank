@@ -18,7 +18,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="users">Gestionar Usuarios</a>
+        <a class="nav-link" href="users">Gestionar usuarios</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">

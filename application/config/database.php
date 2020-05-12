@@ -119,7 +119,7 @@ $db['capabank'] = array(
 	'save_queries' => TRUE
 );
 
-$db['capabankuth'] = array(
+$db['capabankauth'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'postgres',

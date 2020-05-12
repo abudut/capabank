@@ -11,7 +11,7 @@
 			$this->user_id = '';
 			$this->group_id = '';
 				
-			$this->load->database('capabankuth');	
+			$this->load->database('capabankauth');	
 		}
 
 		public function getId() {
