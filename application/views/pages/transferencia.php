@@ -7,7 +7,7 @@
         <div class="card-body">
             <h5 class="card-title">Nuevas Transferencias</h5>
             <p class="card-text">Haz transferencias puntuales y periódicas a cualquier cuenta nacional o internacional.</p>
-            <a href="" class="btn btn-primary">Realizar nueva transferencia</a>
+            <a href="transferencias/add" class="btn btn-primary">Realizar nueva transferencia</a>
         </div>
     </div>
 
@@ -45,8 +45,6 @@
                                 <td> " . $transf->getBeneficiario() . " </td>
                                 <td> " . $transf->getData() . " </td>
                                 <td> " . $transf->getImport() . "€ </td> 
-                        
-							
 							</tr>
 						";
 					}

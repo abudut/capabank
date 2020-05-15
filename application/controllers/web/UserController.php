@@ -18,7 +18,7 @@ class UserController extends CI_Controller
 
 		//Càrrega de les llibreries
 		$this->load->library('ion_auth');
-		if ($this->ion_auth->logged_in()) {
+		if ($this->ion_auth->logged_in() && $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==1 || $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==2 ) {
 			$this->load->library('session');
 		} else {
 			redirect('login', 'refresh');
@@ -32,7 +32,14 @@ class UserController extends CI_Controller
 		$footerData['date'] = date('d/m/Y');
 		$this->load->view('templates/inHeader', $headerData);
 		$this->load->view('templates/bcrm1');
-		$this->load->view('pages/users',$contentData);
+		if ($this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==1){
+			$this->load->view('pages/users',$contentData);
+		}
+
+		if ($this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==2){
+			$this->load->view('pages/prousers',$contentData);
+		}
+
 		$this->load->view('templates/footer', $footerData);
 	}
 
@@ -120,6 +127,7 @@ class UserController extends CI_Controller
 			if ($this->ion_auth->logged_in()) {
 				$this->load->view('templates/inHeader', $headerData);
 				$this->load->view('templates/bcrm2');
+				
 			} else {
 				$this->load->view('templates/defHeader', $headerData);
 				$this->load->view('templates/defMenu');

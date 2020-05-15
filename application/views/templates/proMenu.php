@@ -11,13 +11,6 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="cuentas">Mis Cuentas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="transferencias">Transferencias</a>
-      </li>
-
-      <li class="nav-item">
         <a class="nav-link" href="users">Gestionar usuarios</a>
       </li>
     </ul>

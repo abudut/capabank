@@ -60,12 +60,25 @@ require_once(APPPATH.'models/Rol.php');
 		}
 
 		public function getRol(){
+			if ($this->rol=='') {
+				$this->rol=new Rol();
+				$this->rol=$this->rol->getRol($this->id);
+			}
 			return $this->rol;
 		}
 
 		public function getUser($id) {
 
 			$condition = array('id' => $id);
+			$query = $this->db->get_where('users', $condition);
+
+			if($query->num_rows() != 1) return null;
+			else return $this->createUserFromRawObject($query->result()[0]);
+		}
+
+		public function getUserByUname($uname) {
+
+			$condition = array('username' => $uname);
 			$query = $this->db->get_where('users', $condition);
 
 			if($query->num_rows() != 1) return null;

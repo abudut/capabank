@@ -8,6 +8,9 @@
 		public function __construct() {
 			parent::__construct();
 
+			$this->load->model('user');
+
+
 			//Càrrega de helpers
 			$this->load->helper('url');
 
@@ -29,7 +32,19 @@
 
 			if($this->ion_auth->logged_in()) {
 				$this->load->view('templates/inHeader',$headerData);
-				$this->load->view('templates/inMenu');
+				if ($this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==1) {
+					$this->load->view('templates/adminMenu');
+				}
+
+				if ($this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==2) {
+					$this->load->view('templates/proMenu');
+				}
+
+				if ($this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==3) {
+					$this->load->view('templates/clientMenu');
+			
+				}
+			
 				}
 				else {
 					$this->load->view('templates/defHeader',$headerData);

@@ -47,15 +47,13 @@
 
 			$condition = array('iban' => $iban);
 			$query = $this->db->get_where('compte', $condition);
-
-
 			if($query->num_rows() != 1) return null;
 			else return $this->createCompteFromRawObject($query->result()[0]);
 		}
 
-		public function getComptes() {
-			
-			$query = $this->db->get('compte'); 
+		public function getComptes($email) {
+			$condition = array('email_client' => $email);
+			$query = $this->db->get_where('compte', $condition); 
 			$comptes = [];
 			foreach($query->result() as $data) {
 				$compte = $this->createCompteFromRawObject($data);
@@ -65,7 +63,6 @@
 			return $comptes;
 		}
 
-	
 		public function toArray() {
 			return array(
 				'iban' => $this->iban,

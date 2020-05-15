@@ -15,7 +15,8 @@
             $this->concepto = '';
             $this->beneficiario = '';
             $this->data = '';
-            $this->import = '';
+			$this->import = '';
+			$this->email = '';
             
 
 			
@@ -45,6 +46,9 @@
 			return $this->import;
 		}
 
+		public function getEmail() {
+			return $this->email;
+		}
 	
 		public function getTransferencia($iban_destino) {
 
@@ -56,9 +60,9 @@
 			else return $this->createTransFromRawObject($query->result()[0]);
 		}
 
-		public function getTransferencias() {
-			
-			$query = $this->db->get('transferencia'); 
+		public function getTransferencias($email) {
+			$condition = array('email_client' => $email);
+			$query = $this->db->get_where('transferencia', $condition); 
 			$transferencias = [];
 			foreach($query->result() as $data) {
 				$transferencia = $this->createTransFromRawObject($data);
@@ -66,6 +70,19 @@
 			}
 
 			return $transferencias;
+		}
+
+
+		public function addNewTransferencia($iban_destino,$concepto, $beneficiario,$import,$email) {
+			$data = array(
+				'iban_destinatario' => $iban_destino,
+				'concepto' => $concepto,
+				'beneficiario' => $beneficiario,	
+				'import' => $import,
+				'email_client' => $email,
+				
+			);
+			$this->db->insert('transferencia', $data);
 		}
 
 	
@@ -76,6 +93,7 @@
 				'beneeficiario' => $this->beneficiario,
 				'data' => $this->data,
 				'import' => $this->import,
+				'email_client' => $this->email,
 			
 			);
 		}
