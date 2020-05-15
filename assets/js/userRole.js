@@ -1,4 +1,3 @@
-$('#rol').change(function(){
-    var id = $(this).val();
-    $(location).attr('href','users/changeRole'+id);
-  });  
+$('#rol').on('change', function(){
+  window.location = 'users/changeRole'; 
+});

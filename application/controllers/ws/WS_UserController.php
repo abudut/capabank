@@ -4,15 +4,15 @@
 
 	require_once(APPPATH . 'controllers/ws/WS_MainController.php');
 
-	class WS_ClientController extends WS_MainController {
+	class WS_UserController extends WS_MainController {
 
 		public function __construct() {
 			parent::__construct();
 
-			$this->load->model('client');
+			$this->load->model('user');
 		}
 
-		public function getClient_get($dni) {
+		public function getUser_get($id) {
 			list($msg, $code) = $this->checkAuthorization();
 
 			if($code !== true) {
@@ -21,29 +21,29 @@
 				return;
 			}
 
-			$client = $this->client->getClient($dni);
+			$user = $this->user->getUser($id);
 
-			if($client == null || $client->getEmail() != $msg) {
+			if($user == null || $user->getEmail() != $msg) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'DNI ' . $dni . ' no trobat'
+					'msg' => 'ID ' . $id . ' no trobat'
 				);
 			} else {
 				$httpcode = RestController::HTTP_OK;
-				$message = $client->toArray();
+				$message = $user->toArray();
 			}
 
 			parent::setHeaders();
 			$this->response($message, $httpcode);
 		}
 
-		public function getClient_post($dni) {}
+		public function getUser_post($id) {}
 		
-		public function getClient_options($dni) {
+		public function getUser_options($id) {
 			parent::setOptions();
 		}
 
-		private function getClient($dni) {
+		private function getUser($id) {
 			
 		}
 		

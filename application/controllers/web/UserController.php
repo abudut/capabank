@@ -9,6 +9,7 @@ class UserController extends CI_Controller
 
 		//Càrrega dels models
 		$this->load->model('user');
+		$this->load->model('rol');
 	
 		//Càrrega dels helpers
 		$this->load->helper('url');

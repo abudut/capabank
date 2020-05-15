@@ -98,6 +98,13 @@ require_once(APPPATH.'models/Rol.php');
 			$this->db->insert('users', $data);
 		}
 
+		public function checkUserEmail($email) {
+			$data = array('email' => $email);
+			$query = $this->db->get_where('users', $data);
+			if($query->num_rows() != 1) return false;
+			return true;
+		}
+
 		public function updateUser($id,$user, $name, $surname,$password,$email,$phone){
 			$data = array(
 				'username' => $user,

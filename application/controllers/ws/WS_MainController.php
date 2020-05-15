@@ -8,7 +8,7 @@
         public function __construct() {
 			parent::__construct();
 
-			$this->load->model('client');
+			$this->load->model('user');
 		}
 		
 		protected function checkAuthorization() {
@@ -39,7 +39,7 @@
 				//Comprovar contra la BD
 				$json_result = json_decode($result, true);	//Transforma un string JSON en un array
 				$email = $json_result['email'];
-				$correct = $this->client->checkClientEmail($email);
+				$correct = $this->user->checkUserEmail($email);
 				if(!$correct) {
 					$message = "Invalid user";
 					$httpcode = RestController::HTTP_UNAUTHORIZED;

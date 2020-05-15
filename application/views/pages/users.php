@@ -77,14 +77,13 @@
 				<th scope="col">Apellidos</th>
 				<th scope="col">Email</th>
 				<th scope="col">Telefono</th>
-				<th scope="col">Rol</th>
+				<th scope="col">Grupo</th>
 				<th scope="col">Estado</th>
 				<th scope="col">Accion</th>
 
 			</tr>
 		</thead>
 		<?php
-
 
 		foreach ($users as $user) {
 			$group = 0;
@@ -100,14 +99,14 @@
 								<td> " . $user->getSurname() . " </td>
 								<td> " . $user->getEmail() . " </td>
 								<td> " . $user->getPhone() . " </td>
-								<td>  <select name='rol' class='custom-select mr-sm' >
+								<td>  <select name='rol' id='rol' class='custom-select mr-sm' onChange='window.document.location.href='users/changeRole''>
 								";
 			echo "
 					<option disabled='disabled'";
 			if ($group == 0) {
 				echo "selected";
 			}
-			echo "> Elegir Rol...</option>
+			echo "> Elegir Grupo...</option>
 				<option value='1'";
 			if ($group == 1) {
 				echo "selected";

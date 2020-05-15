@@ -1,11 +1,14 @@
 <?php
+	require_once(APPPATH.'models/Rol.php');
 	class Cuenta extends CI_Model {
+		
 
 		private $iban;
 		private $data;
 		private $concepte;
 		private $import;
 		private $sou;
+		private $email;
 
 
 		public function __construct() {
@@ -14,9 +17,10 @@
 			$this->concepte = '';
 			$this->import = '';
 			$this->sou = '';
+			$this->email = '';
 		
 			
-			$this->load->database('capabank');	
+			$this->load->database('capabankauth');	
 		}
 
 		public function getIban() {
