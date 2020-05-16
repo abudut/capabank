@@ -134,7 +134,7 @@
 			}
 
 			echo '</td><td><a href="' . base_url() . 'users/editUser/' . $user->getId() . '"><button class="btn btn-warning">Editar</button></a> ';
-			echo '<button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" >Elimnar</button></td>
+			echo '</td>
 							</tr>
 							</tbody>';
 		}

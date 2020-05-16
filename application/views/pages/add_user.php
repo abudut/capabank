@@ -1,5 +1,5 @@
 		<div class="container-fluid">
-			<h3>Agreagr Usuario</h3>
+			<h3>Crear Usuario</h3>
 
 			<form method="post">
 				<label>Usuario</label>
@@ -19,10 +19,18 @@
 
 				<label>Telefono</label>
 				<input type="phone" name="phone" class="form-control">
+				<select name="rol">
+
+				<option class="custom-select mr" disabled="disabled" selected> Elegir Grupo...</option>
+				<option  value="1" > Administrador</option>
+				<option  value="2" > Professional</option>
+				<option  value="3" > Cliente</option>
+
+				</select>
 
 				<div class="form-row align-items-center">
 					<div class="my-3">
-						<input type="submit" value="Afegir usuari" class="btn btn-primary">
+						<input type="submit" value="Añadir usuari" class="btn btn-primary">
 					</div>
 			</form>
 

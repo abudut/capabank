@@ -102,6 +102,13 @@ class UserController extends CI_Controller
 		redirect('users');
 	}
 
+	public function addUserRol(){
+		$id = $this->input->post('id');
+		$rol = $this->input->post('rol');
+		$this->user->addUserRol($id,$rol);
+		redirect('users');
+	}
+
 	public function deleteUser(){
 		$id = $this->uri->segment('3');
 		$this->user->deleteUser($id);
@@ -145,6 +152,8 @@ class UserController extends CI_Controller
 				$this->input->post('email'),
 				$this->input->post('phone')
 			);
+
+
 			redirect('users');
 		}
 	}

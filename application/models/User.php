@@ -67,6 +67,8 @@ require_once(APPPATH.'models/Rol.php');
 			return $this->rol;
 		}
 
+
+
 		public function getUser($id) {
 
 			$condition = array('id' => $id);
@@ -118,6 +120,9 @@ require_once(APPPATH.'models/Rol.php');
 			return true;
 		}
 
+	
+
+
 		public function updateUser($id,$user, $name, $surname,$password,$email,$phone){
 			$data = array(
 				'username' => $user,
@@ -142,6 +147,14 @@ require_once(APPPATH.'models/Rol.php');
 			$data = array('active' => $user_status );
 			$this->db->where('id',$id);
 			$this->db->update('users', $data); 
+		}
+
+		public function addUserRol($id,$rol){
+			$data = array(
+				'user_id' => $id,
+				'users_groups' => $rol,	
+			);
+			$this->db->insert('users_groups', $data);
 		}
 
 		public function setUserRol($id,$rol){
@@ -192,5 +205,3 @@ require_once(APPPATH.'models/Rol.php');
 			return $user;
 		}
 	}
-
-?>
