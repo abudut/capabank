@@ -13,6 +13,10 @@
       <li class="nav-item">
         <a class="nav-link" href="users">Gestionar usuarios</a>
       </li>
+          
+      <li class="nav-item">
+        <a class="nav-link" href="cuentas">Cuentas</a>
+      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">

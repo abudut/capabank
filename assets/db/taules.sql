@@ -13,7 +13,7 @@ CREATE TABLE Client (
 
 CREATE TABLE compte(
     iban varchar(22) PRIMARY KEY NOT NULL,
-    DATA Date,
+    DATA  date DEFAULT CURRENT_TIMESTAMP,
     concepte varchar(20),
     import decimal,
     sou decimal,
@@ -32,7 +32,7 @@ CREATE TABLE Transferencia (
     iban_destinatario varchar(22) PRIMARY KEY NOT NULL,
     concepto varchar(20),
     beneficiario varchar(20),
-    data date,
+    data date DEFAULT CURRENT_TIMESTAMP,
     import decimal,
     Email_Client varchar(20),
     FOREIGN KEY (Email_Client) REFERENCES users(Email)

@@ -18,6 +18,7 @@
 			$this->import = '';
 			$this->sou = '';
 			$this->email = '';
+			
 		
 			
 			$this->load->database('capabankauth');	
@@ -43,6 +44,10 @@
 			return $this->sou;
 		}
 
+		public function getEmail() {
+			return $this->email;
+		}
+
 		public function getCompte($iban) {
 
 			$condition = array('iban' => $iban);
@@ -51,9 +56,8 @@
 			else return $this->createCompteFromRawObject($query->result()[0]);
 		}
 
-		public function getComptes($email) {
-			$condition = array('email_client' => $email);
-			$query = $this->db->get_where('compte', $condition); 
+		public function getComptes() {
+			$query = $this->db->get('compte'); 
 			$comptes = [];
 			foreach($query->result() as $data) {
 				$compte = $this->createCompteFromRawObject($data);
@@ -63,6 +67,34 @@
 			return $comptes;
 		}
 
+
+		public function getComptesByEmail($email) {
+			$condition = array('email_client' => $email);
+			$query = $this->db->get_where('compte', $condition); 
+			$comptes = [];
+			foreach($query->result() as $data) {
+				$compte = $this->createCompteFromRawObject($data);
+				array_push($comptes, $compte);
+			}
+
+
+			return $comptes;
+		}
+
+		public function deleteCuenta($iban){
+			$this->db->where('iban',$iban);	
+			$this->db->delete('compte');
+		}
+
+		public function addNewCuenta($iban,$sou,$email) {
+			$data = array(
+				'iban' => $iban,
+				'sou' => $sou,
+				'email_client' => $email,
+			);
+			$this->db->insert('compte', $data);
+		}
+
 		public function toArray() {
 			return array(
 				'iban' => $this->iban,
@@ -70,6 +102,7 @@
 				'concepte' => $this->concepte,
 				'import' => $this->import,
 				'sou' => $this->sou,
+				'email_client' => $this->email,
 			
 			);
 		}
@@ -82,6 +115,7 @@
 			$compte->concepte = $data->concepte;
 			$compte->import = $data->import;
 			$compte->sou = $data->sou;
+			$compte->email = $data->email_client;
 		
 
 			return $compte;

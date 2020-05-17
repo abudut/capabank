@@ -120,8 +120,6 @@ require_once(APPPATH.'models/Rol.php');
 			return true;
 		}
 
-	
-
 
 		public function updateUser($id,$user, $name, $surname,$password,$email,$phone){
 			$data = array(
