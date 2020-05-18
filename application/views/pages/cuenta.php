@@ -6,8 +6,6 @@
 				<tr>
 					<th>IBAN</th>
 					<th>Fecha</th>
-					<th>Concepte</th>
-					<th>Importe</th>
 					<th>Saldo</th>
 				</tr>
                 </thead>
@@ -17,8 +15,6 @@
 							<tr>
 								<td> " . $cuenta->getIban() . " </td>
 								<td> " . $cuenta->getData() . " </td>
-								<td> " . $cuenta->getConcepte() . " </td>
-                                <td> " . $cuenta->getImport() . "€ </td>
                                 <td> " . $cuenta->getSou() . "€ </td>
 							
 							</tr>

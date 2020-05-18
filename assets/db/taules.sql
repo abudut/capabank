@@ -14,22 +14,14 @@ CREATE TABLE Client (
 CREATE TABLE compte(
     iban varchar(22) PRIMARY KEY NOT NULL,
     DATA  date DEFAULT CURRENT_TIMESTAMP,
-    concepte varchar(20),
-    import decimal,
     sou decimal,
     email_client varchar(20),
     FOREIGN KEY (email_client) REFERENCES users(email)
 );
 
 
-CREATE TABLE Professional (
-    Email varchar(20) PRIMARY KEY NOT NULL,
-    Email_Client varchar(20),
-    FOREIGN KEY (Email_Client) REFERENCES users(Email)
-);
-
 CREATE TABLE Transferencia (
-    iban_destinatario varchar(22) PRIMARY KEY NOT NULL,
+    iban_destinatario varchar(22),
     concepto varchar(20),
     beneficiario varchar(20),
     data date DEFAULT CURRENT_TIMESTAMP,
@@ -41,8 +33,7 @@ CREATE TABLE Transferencia (
  insert into Transferencia("iban_destinatario","concepto","beneficiario","data","import","email_client") VALUES('ES4949','Movil','Abudu Touray','12-12-2020','200','ew@gmail.com');
 
 
-
- insert into compte("iban","data","concepte","import","sou","email_client") VALUES('ES123','12-12-2020','Traspaso','20','200','ew@gmail.com');
+ insert into compte("iban","data","sou","email_client") VALUES('ES123','12-12-2020','0','r@gmil.com');
 
 
 

@@ -44,9 +44,7 @@
 			$this->load->view('templates/bcrm7');
 			$this->load->view('pages/add_transf', $contentData);
 			$this->load->view('templates/footer', $footerData);
-
 		
-			
 		}
 
 		public function transferir(){
@@ -61,5 +59,3 @@
 		}
 
 	}
-	
-?>

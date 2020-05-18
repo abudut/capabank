@@ -28,33 +28,36 @@
 			}
 		}
 
-	
 		public function getUser_get($id) {
+			
 			list($msg, $code) = $this->checkAuthorization();
+			if($code === RestController::HTTP_BAD_REQUEST) {
+				
+				if($id != null) {
+					
+					$users = $this->user->getUser($id);
 
-			if($code !== true) {
+					$retmsg = [];
+					foreach($users as $user) {
+						array_push($retmsg, $user->toArray());
+						
+					}
+
+					parent::setHeaders();
+					$this->response($retmsg, RestController::HTTP_OK);
+				} else {
+					
+					parent::setHeaders();
+					$this->response($msg, $code);
+				}
+			} else if($code === RestController::HTTP_UNAUTHORIZED) {
 				parent::setHeaders();
 				$this->response($msg, $code);
-				return;
+		
 			}
 
-			$user = $this->user->getUser($id);
-
-			if($user == null || $user->getEmail() != $msg) {
-				$httpcode = RestController::HTTP_NOT_FOUND;
-				$message = array(
-					'msg' => 'ID ' . $id . ' no trobat'
-				);
-			} else {
-				$httpcode = RestController::HTTP_OK;
-				$message = $user->toArray();
-			}
-
-			parent::setHeaders();
-			$this->response($message, $httpcode);
 		}
 			
-		
 
 		public function getUser_post($id) {}
 		

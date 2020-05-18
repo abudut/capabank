@@ -1,8 +1,8 @@
 
-<div class="container-fluid">
+<div class="container-fluid ">
     <h3>Realizar Transferencia</h3>
 
-    <div class="card w-50">
+    <div class="card w-25">
         <div class="card-header">
             Transferencia
         </div>
@@ -23,11 +23,10 @@
                     <input type="text" name="importe" class="form-control mx-sm-3">
 
                     <div class="my-3 text-right">
-                        <input type="submit" value="Enviar" class=" mb-2 btn btn-primary">
+                        <input type="submit" value="Enviar" class="btn btn-primary">
                     </div>
+                  
                 </div>
-
-
 </form>
         </div>
     </div>

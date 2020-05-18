@@ -5,8 +5,6 @@
 
 		private $iban;
 		private $data;
-		private $concepte;
-		private $import;
 		private $sou;
 		private $email;
 
@@ -14,8 +12,6 @@
 		public function __construct() {
 			$this->iban = '';
 			$this->data = '';
-			$this->concepte = '';
-			$this->import = '';
 			$this->sou = '';
 			$this->email = '';
 			
@@ -32,13 +28,6 @@
 			return $this->data;
 		}
 
-		public function getConcepte() {
-			return $this->concepte;
-		}
-
-		public function getImport() {
-			return $this->import;
-		}
 
 		public function getSou() {
 			return $this->sou;
@@ -55,6 +44,16 @@
 			if($query->num_rows() != 1) return null;
 			else return $this->createCompteFromRawObject($query->result()[0]);
 		}
+
+		public function prova(){
+			$iban_destino='ES123';
+			$this->db->select_sum('import');
+			$this->db->where('iban_destinatario',$iban_destino);
+			$query = $this->db->get('transferencia'); 
+			$result =$query->row();
+			var_dump($result->sou);
+		
+	}
 
 		public function getComptes() {
 			$query = $this->db->get('compte'); 
@@ -99,8 +98,6 @@
 			return array(
 				'iban' => $this->iban,
 				'data' => $this->data,
-				'concepte' => $this->concepte,
-				'import' => $this->import,
 				'sou' => $this->sou,
 				'email_client' => $this->email,
 			
@@ -112,8 +109,6 @@
 
 			$compte->iban = $data->iban;
 			$compte->data = $data->data;
-			$compte->concepte = $data->concepte;
-			$compte->import = $data->import;
 			$compte->sou = $data->sou;
 			$compte->email = $data->email_client;
 		

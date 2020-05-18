@@ -54,17 +54,21 @@ $route['login'] = 'web/SessionController/login';
 $route['about'] = 'web/AboutController/view';
 $route['home'] = 'web/HomeController/view';
 $route['users'] = 'web/UserController/index';
+
 $route['wsusers'] = 'ws/WS_UserController/getUsers';
 $route['wsusers/(:num)'] = 'ws/WS_UserController/getUser/$1';
+
 $route['users/add'] = 'web/UserController/addNewUser';
 $route['users/updateStatus'] = 'web/UserController/updateStatus';
 $route['users/changeRole'] = 'web/UserController/changeUserRol';
 $route['users/editUser/(:num)'] = 'web/UserController/editUser/$1';
 $route['users/updateUser/(:num)'] = 'web/UserController/updateUser/$1';
 $route['users/deleteUser/(:num)'] = 'web/UserController/deleteUser/$1';
+
 $route['cuentas'] = 'web/CuentaController/index';
 $route['cuentas/add'] = 'web/CuentaController/addNewCuenta';
 $route['cuentas/deleteCuenta/(:any)'] = 'web/CuentaController/deleteCuenta/$1';
+
 $route['transferencias'] = 'web/TransferenciaController/index';
 $route['transferencias/add'] = 'web/TransferenciaController/addNewTransferencia';
 $route['transferencias/transferir'] = 'web/TransferenciaController/transferir';
