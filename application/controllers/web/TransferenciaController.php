@@ -9,6 +9,7 @@
             $this->load->model('cuenta');
 			$this->load->model('user');
 			$this->load->model('transferencia');
+			
 
 			//Càrrega dels helpers
 			$this->load->helper('url');

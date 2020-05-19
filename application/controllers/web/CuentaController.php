@@ -8,13 +8,14 @@
 			//Càrrega dels models
 			$this->load->model('cuenta');
 			$this->load->model('user');
+			$this->load->model('rol');
 
 			//Càrrega dels helpers
 			$this->load->helper('url');
 
 			//Càrrega de les llibreries
 			$this->load->library('ion_auth');
-			if ($this->ion_auth->logged_in() ) {
+			if ($this->ion_auth->logged_in() && $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==2 || $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==3) {
 			$this->load->library('session');	
 
 			} else {

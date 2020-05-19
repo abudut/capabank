@@ -11,54 +11,56 @@
 
 			$this->load->model('cuenta');
 		}
-	
-		public function getCuenta_get() {
-			$user = $this->cuenta->getUsers();
+
+		public function getCuentas_get() {
+			$cuenta = $this->cuenta->getComptes();
 
 			parent::setHeaders();
 
-			if(count($user) == 0) {
+			if(count($cuenta) == 0) {
 				$this->response('Empty user', RestController::HTTP_NOT_FOUND);
 			} else {
 				$msg = [];
-				foreach($user as $us) {
-					array_push($msg, $us->toArray());
+				foreach($cuenta as $cuentas) {
+					array_push($msg, $cuentas->toArray());
 				}
 				$this->response($msg, RestController::HTTP_OK);
 			}
 		}
-
 	
-		public function getUser_get($id) {
+		
+		public function getCuenta_get($email) {
+			
 			list($msg, $code) = $this->checkAuthorization();
+			if($code === RestController::HTTP_BAD_REQUEST) {
+				
+				if($email != null) {
+					
+					$cuentas = $this->cuenta->ws_getCompte($email);
 
-			if($code !== true) {
+					$retmsg = [];
+					foreach($cuentas as $cuenta) {
+						array_push($retmsg,$cuenta);
+					}
+
+					parent::setHeaders();
+					$this->response($retmsg, RestController::HTTP_OK);
+				} else {
+					
+					parent::setHeaders();
+					$this->response($msg, $code);
+				}
+			} else if($code === RestController::HTTP_UNAUTHORIZED) {
 				parent::setHeaders();
 				$this->response($msg, $code);
-				return;
-			}
-
-			$user = $this->user->getUser($id);
-
-			if($user == null || $user->getEmail() != $msg) {
-				$httpcode = RestController::HTTP_NOT_FOUND;
-				$message = array(
-					'msg' => 'ID ' . $id . ' no trobat'
-				);
-			} else {
-				$httpcode = RestController::HTTP_OK;
-				$message = $user->toArray();
-			}
-
-			parent::setHeaders();
-			$this->response($message, $httpcode);
-		}
-			
 		
+			}
+
+		}
 
 		public function getUser_post($id) {}
 		
-		public function getUser_options($id) {
+		public function getCuenta_options($email) {
 			parent::setOptions();
 		}
 

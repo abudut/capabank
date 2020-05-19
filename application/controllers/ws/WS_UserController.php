@@ -35,11 +35,11 @@
 				
 				if($id != null) {
 					
-					$users = $this->user->getUser($id);
+					$users = $this->user->ws_getUser($id);
 
 					$retmsg = [];
 					foreach($users as $user) {
-						array_push($retmsg, $user->toArray());
+						array_push($retmsg,$user);
 						
 					}
 
@@ -63,6 +63,10 @@
 		
 		public function getUser_options($id) {
 			parent::setOptions();
+		}
+
+		public function deleteUser_delete($id){
+
 		}
 
 		private function getUser($id) {

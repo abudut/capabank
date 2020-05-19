@@ -67,6 +67,15 @@ require_once(APPPATH.'models/Rol.php');
 			return $this->rol;
 		}
 
+		public function ws_getUser($id) {
+
+			$condition = array('id' => $id);
+			$query = $this->db->get_where('users', $condition);
+
+			if($query->num_rows() != 1) return null;
+			else return $query->result_array();
+		}
+
 
 
 		public function getUser($id) {
@@ -121,12 +130,11 @@ require_once(APPPATH.'models/Rol.php');
 		}
 
 
-		public function updateUser($id,$user, $name, $surname,$password,$email,$phone){
+		public function updateUser($id,$user, $name, $surname,$email,$phone){
 			$data = array(
 				'username' => $user,
 				'first_name' => $name,
-				'last_name' => $surname,
-				'password' => $password,	
+				'last_name' => $surname,	
 				'email' => $email,
 				'phone' => $phone,
 			);

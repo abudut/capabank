@@ -66,6 +66,15 @@
 			return $comptes;
 		}
 
+		public function ws_getCompte($email) {
+
+			$condition = array('email_client' => $email);
+			$query = $this->db->get_where('compte', $condition);
+
+			if($query->num_rows() != 1) return null;
+			else return $query->result_array();
+		}
+
 
 		public function getComptesByEmail($email) {
 			$condition = array('email_client' => $email);
@@ -75,7 +84,6 @@
 				$compte = $this->createCompteFromRawObject($data);
 				array_push($comptes, $compte);
 			}
-
 
 			return $comptes;
 		}

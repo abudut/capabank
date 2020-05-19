@@ -12,9 +12,6 @@
 		<label>Apellidos</label>
 		<input type="text" name="esurname" class="form-control" value="<?php echo $users->getSurname() ?>">
 
-		<label>Contraseña</label>
-		<input type="password" name="epassword" class="form-control" value="<?php echo $users->getPassword() ?>">
-
 		<label>Email</label>
 		<input type="email" name="eemail" class="form-control" value="<?php echo $users->getEmail() ?>">
 

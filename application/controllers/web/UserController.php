@@ -71,7 +71,6 @@ class UserController extends CI_Controller
 			$this->input->post('edni'),
 			$this->input->post('ename'),
 			$this->input->post('esurname'),
-			$this->input->post('epassword'),
 			$this->input->post('eemail'),
 			$this->input->post('ephone')
 		);

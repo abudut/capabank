@@ -57,6 +57,10 @@ $route['users'] = 'web/UserController/index';
 
 $route['wsusers'] = 'ws/WS_UserController/getUsers';
 $route['wsusers/(:num)'] = 'ws/WS_UserController/getUser/$1';
+$route['delete/(:num)'] = 'ws/WS_UserController/deleteUser/$1';
+//$route['wscuentas'] = 'ws/WS_CuentaController/getCuentas';
+$route['wscuentas/(:any)'] = 'ws/WS_CuentaController/getCuenta/$1';
+$route['wscuentas'] = 'ws/WS_CuentaController/getCuenta';
 
 $route['users/add'] = 'web/UserController/addNewUser';
 $route['users/updateStatus'] = 'web/UserController/updateStatus';
