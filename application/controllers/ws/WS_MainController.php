@@ -36,18 +36,35 @@
 				$result = curl_exec($curldata);
 				curl_close($curldata);
 
-				//Comprovar contra la BD
+				
 				$json_result = json_decode($result, true);	//Transforma un string JSON en un array
-				$email = $json_result['email'];
-				$correct = $this->user->checkUserEmail($email);
-				if(!$correct) {
-					$message = "Invalid user";
-					$httpcode = RestController::HTTP_UNAUTHORIZED;
-					return array($message, $httpcode);
+				if(!isset($json_result['email'])) {
+					//Google OAUTH
+					$curldata = curl_init();
+					curl_setopt($curldata, CURLOPT_URL, 'https://dev-216506.okta.com/oauth2/v1/userinfo');
+					curl_setopt($curldata, CURLOPT_POST, 1);
+					curl_setopt($curldata, CURLOPT_RETURNTRANSFER, true);
+					$headers = ['Authorization: Bearer ' . $token];
+					curl_setopt($curldata, CURLOPT_HTTPHEADER, $headers);
+
+					$result = curl_exec($curldata);
+					curl_close($curldata);
+
+					$json_result = json_decode($result, true);	//Transforma un string JSON en un array
 				}
-				return array($email, true);
+
+					//Comprovar contra la BD
+					$json_result = json_decode($result, true);	//Transforma un string JSON en un array
+					$email = $json_result['email'];
+					$correct = $this->user->checkUserEmail($email);
+					if(!$correct) {
+						$message = "Invalid user";
+						$httpcode = RestController::HTTP_UNAUTHORIZED;
+						return array($message, $httpcode);
+					}
+					return array($email, true);
+				}
 			}
-		}
 
         protected function setHeaders($token = null) {
             $this->output->set_header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-type, Accept");

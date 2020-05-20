@@ -99,7 +99,7 @@
 								<td> " . $user->getSurname() . " </td>
 								<td> " . $user->getEmail() . " </td>
 								<td> " . $user->getPhone() . " </td>
-								<td>  <select name='rol' id='rol' class='custom-select mr-sm' onChange='window.document.location.href='users/changeRole''>
+								<td>  <select name='rol' id='rol' class='custom-select mr-sm' onChange='window.document.location.href=users/changeRole;'>
 								";
 			echo "
 					<option disabled='disabled'";
@@ -143,3 +143,4 @@
 	</table>
 	<a class="btn btn-primary" href="<?php echo base_url('users/add'); ?>">Agragar usuario</a>
 </div>
+

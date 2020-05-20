@@ -45,16 +45,6 @@
 			else return $this->createCompteFromRawObject($query->result()[0]);
 		}
 
-		public function prova(){
-			$iban_destino='ES123';
-			$this->db->select_sum('import');
-			$this->db->where('iban_destinatario',$iban_destino);
-			$query = $this->db->get('transferencia'); 
-			$result =$query->row();
-			var_dump($result->sou);
-		
-	}
-
 		public function getComptes() {
 			$query = $this->db->get('compte'); 
 			$comptes = [];

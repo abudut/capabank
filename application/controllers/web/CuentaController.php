@@ -15,7 +15,7 @@
 
 			//Càrrega de les llibreries
 			$this->load->library('ion_auth');
-			if ($this->ion_auth->logged_in() && $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==2 || $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==3) {
+			if ($this->ion_auth->logged_in() && ($this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==3) || $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==2 ) {
 			$this->load->library('session');	
 
 			} else {

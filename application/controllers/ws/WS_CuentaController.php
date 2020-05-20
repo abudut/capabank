@@ -10,6 +10,17 @@
 			parent::__construct();
 
 			$this->load->model('cuenta');
+			$this->load->model('user');
+			$this->load->model('rol');
+
+
+			$this->load->library('ion_auth');
+			if ($this->ion_auth->logged_in() && $this->user->getUserByUname($this->session->userdata('username'))->getRol()->getGroupId() ==1) {
+			$this->load->library('session');	
+
+			} else {
+				redirect('login', 'refresh');
+			}
 		}
 
 		public function getCuentas_get() {
@@ -29,7 +40,7 @@
 		}
 	
 		
-		public function getCuenta_get($email) {
+		public function getCuenta_get($email=null) {
 			
 			list($msg, $code) = $this->checkAuthorization();
 			if($code === RestController::HTTP_BAD_REQUEST) {
@@ -60,7 +71,7 @@
 
 		public function getUser_post($id) {}
 		
-		public function getCuenta_options($email) {
+		public function getCuenta_options($email=null) {
 			parent::setOptions();
 		}
 
