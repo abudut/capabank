@@ -8,7 +8,6 @@
 	<script src="<?php echo base_url('assets\js\jquery-3.1.0.js'); ?>"> </script>
 	<script src="<?php echo base_url('assets\js\bootstrap.min.js'); ?>"> </script>
 	<script src="<?php echo base_url('assets\js\modal.js'); ?>"> </script>
-	<script src="<?php echo base_url('assets\js\userRole.js'); ?>"> </script>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/mystyle.css'); ?>">
 
 </head>

@@ -1,3 +1,8 @@
+/* UsuariAdmin: Administrator
+Contraseña: password*/
+
+
+
 CREATE DATABASE bankauth;
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
