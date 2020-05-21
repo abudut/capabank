@@ -16,7 +16,7 @@ CREATE TABLE compte(
     DATA  date DEFAULT CURRENT_TIMESTAMP,
     sou decimal,
     email_client varchar(20),
-    FOREIGN KEY (email_client) REFERENCES users(email)
+    FOREIGN KEY (email_client) REFERENCES users(email) ON DELETE CASCADE
 );
 
 
@@ -27,13 +27,12 @@ CREATE TABLE Transferencia (
     data date DEFAULT CURRENT_TIMESTAMP,
     import decimal,
     Email_Client varchar(20),
-    FOREIGN KEY (Email_Client) REFERENCES users(Email)
+    FOREIGN KEY (Email_Client) REFERENCES users(Email) ON DELETE CASCADE
 );
 
- insert into Transferencia("iban_destinatario","concepto","beneficiario","data","import","email_client") VALUES('ES4949','Movil','Abudu Touray','12-12-2020','200','ew@gmail.com');
+ insert into Transferencia("iban_destinatario","concepto","beneficiario","data","import","email_client") VALUES('ES4949','Movil','Abudu Touray','12-12-2020','200','abudu@gmail.com');
 
-
- insert into compte("iban","data","sou","email_client") VALUES('ES123','12-12-2020','0','r@gmil.com');
+ insert into compte("iban","data","sou","email_client") VALUES('ES123','12-12-2020','0','abudu@gmil.com');
 
 
 

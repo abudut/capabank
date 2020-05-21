@@ -66,13 +66,15 @@ class UserController extends CI_Controller
 
 	public function updateUser(){
 		$id = $this->uri->segment('3');
+		$rol = $this->input->post('rol');
 		$res = $this->user->updateUser(
 			$id,
 			$this->input->post('edni'),
 			$this->input->post('ename'),
 			$this->input->post('esurname'),
 			$this->input->post('eemail'),
-			$this->input->post('ephone')
+			$this->input->post('ephone'),
+			$rol
 		);
 		if($res<1) {
 			$this->session->set_flashdata('msg', "El usuario se ha actualizado exitosamente.");
@@ -90,16 +92,9 @@ class UserController extends CI_Controller
 		$status = $this->input->post('status');
 		$this->user->updateState($id, $status);
 		$this->session->set_flashdata('msg', "El estado del usuario se ha canviado exitosamente.");
-		$this->session->set_flashdata('msg_class', 'alert-success');
 		redirect('users');
 	}
 
-	public function changeUserRol(){
-		$id = $this->input->post('id');
-		$rol = $this->input->post('rol');
-		$this->user->setUserRol($id,$rol);
-		redirect('users');
-	}
 
 	public function addUserRol(){
 		$id = $this->input->post('id');
@@ -149,7 +144,9 @@ class UserController extends CI_Controller
 				$this->input->post('surname'),
 				password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 				$this->input->post('email'),
-				$this->input->post('phone')
+				$this->input->post('phone'),
+				$this->input->post('rol')
+
 			);
 
 

@@ -99,32 +99,22 @@
 								<td> " . $user->getSurname() . " </td>
 								<td> " . $user->getEmail() . " </td>
 								<td> " . $user->getPhone() . " </td>
-								<td>  <select name='rol' id='rol' class='custom-select mr-sm' onChange='window.document.location.href=users/changeRole;'>
+								<td><form>  <select name='rol' id='rol' class='custom-select mr-sm'>
 								";
-			echo "
-					<option disabled='disabled'";
-			if ($group == 0) {
-				echo "selected";
-			}
-			echo "> Elegir Grupo...</option>
-				<option value='1'";
+	
 			if ($group == 1) {
-				echo "selected";
+				echo "<option selected>Administrador</option>";
 			}
-			echo ">Administrador";
-
-			echo "</option>
-					<option value='2'";
+			
 			if ($group == 2) {
-				echo "selected";
+				echo "<option selected>Professional</option>";
 			}
-			echo ">Professional  </option>
-					<option value='3'";
+		
 			if ($group == 3) {
-				echo "selected";
+				echo "<option selected>Cliente</option>";
 			}
-			echo ">Cliente  </option>";
-			echo " </select> </td>
+			
+			echo " </select></form> </td>
 								<td>";
 			if ($user->getActive() == 1) {
 				echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';

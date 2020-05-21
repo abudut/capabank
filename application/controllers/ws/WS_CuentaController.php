@@ -68,18 +68,10 @@
 			}
 
 		}
-
-		public function getUser_post($id) {}
 		
 		public function getCuenta_options($email=null) {
 			parent::setOptions();
-		}
-
-		private function getUser($id) {
-			
-		}
-		
-		
+		}	
 	}
 
 ?>

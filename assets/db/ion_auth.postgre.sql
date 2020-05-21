@@ -1,3 +1,4 @@
+CREATE DATABASE bankauth;
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
     "username" varchar(100) NOT NULL,
@@ -55,8 +56,8 @@ INSERT INTO users (username, password, email, activation_code, forgotten_passwor
     ('administrator','$2y$08$200Z6ZZbp3RAEXoaWcMA6uJOFicwNZaqk4oDhqTUiFXFe63MG.Daa','admin@admin.com','',NULL,'1268889823','1268889823','1','Admin','istrator','0');
 
 INSERT INTO users_groups (user_id, group_id) VALUES
-    (1,1),
-    (1,2);
+    (1,1);
+   
 
 CREATE TABLE "login_attempts" (
     "id" SERIAL NOT NULL,
@@ -66,3 +67,4 @@ CREATE TABLE "login_attempts" (
   PRIMARY KEY("id"),
   CONSTRAINT "check_id" CHECK(id >= 0)
 );
+

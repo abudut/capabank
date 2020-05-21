@@ -101,31 +101,20 @@
 								<td> " . $user->getPhone() . " </td>
 								<td>  <select name='rol' id='rol' class='custom-select mr-sm' onChange='window.document.location.href='users/changeRole''>
 								";
-			echo "
-					<option disabled='disabled'";
-			if ($group == 0) {
-				echo "selected";
-			}
-			echo "> Elegir Grupo...</option>
-				<option value='1'";
-			if ($group == 1) {
-				echo "selected";
-			}
-			echo ">Administrador";
-
-			echo "</option>
-					<option value='2'";
-			if ($group == 2) {
-				echo "selected";
-			}
-			echo ">Professional  </option>
-					<option value='3'";
-			if ($group == 3) {
-				echo "selected";
-			}
-			echo ">Cliente  </option>";
-			echo " </select> </td>
-								<td>";
+								if ($group == 1) {
+									echo "<option selected>Administrador</option>";
+								}
+								
+								if ($group == 2) {
+									echo "<option selected>Professional</option>";
+								}
+							
+								if ($group == 3) {
+									echo "<option selected>Cliente</option>";
+								}
+								
+								echo " </select></form> </td>
+													<td>";
 			if ($user->getActive() == 1) {
 				echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';
 			} else {

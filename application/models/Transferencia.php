@@ -82,7 +82,6 @@ class Transferencia extends CI_Model
 		return $transferencias;
 	}
 
-
 	public function addNewTransferencia($iban_destino, $concepto, $beneficiario, $import, $email)
 	{
 		$data = array(
@@ -90,8 +89,8 @@ class Transferencia extends CI_Model
 			'concepto' => $concepto,
 			'beneficiario' => $beneficiario,
 			'import' => $import,
-			'email_client' => $email,
-		);
+			'email_client' => $email,);
+
 
 		$condition = array('iban' => $iban_destino);
 		$query = $this->db->get_where('compte', $condition);
@@ -99,28 +98,24 @@ class Transferencia extends CI_Model
 			$this->db->insert('transferencia', $data);
 		} else {
 			$this->db->insert('transferencia', $data);
-			$this->db->select_sum('import');
-			$this->db->where('iban_destinatario', $iban_destino);
-			$query = $this->db->get('transferencia');
-			$result = $query->row()->import;
-			$saldo = array('sou' => $result);
+			$condition = array('iban' => $iban_destino);
+			$query = $this->db->get_where('compte', $condition);
+			$sou = $query->row()->sou;
+			$nouImport = $sou + $import;
+			$saldo = array('sou' => $nouImport);
 			$this->db->where('iban', $iban_destino);
 			$this->db->update('compte', $saldo);
-		}
-		$condition = array('email_client' => $email);
-		$query = $this->db->get_where('compte', $condition);
-		if ($query->num_rows() != 1) {
-			$this->db->insert('transferencia', $data);
-		} else {
-			$this->db->insert('transferencia', $data);
-			$this->db->select_sum('import');
-			$this->db->where('iban_destinatario', $iban_destino);
-			$query = $this->db->get('transferencia');
-			$result = $query->row()->import;
-			$saldo = array('sou' => $result);
-			$this->db->where('iban', $iban_destino);
+			$querydes=$this->db->query("SELECT iban FROM compte WHERE iban=' .$iban_destino. '");
+			if ($querydes->row()->email_client != $email) {
+			$condition2 = array('email_client' => $email);
+			$query = $this->db->get_where('compte', $condition2);
+			$sou = $query->row()->sou;
+			$nouImport = $sou - $import;
+			$saldo = array('sou' => $nouImport);
+			$this->db->where('email_client', $email);
 			$this->db->update('compte', $saldo);
-		}
+		var_dump($querydes);
+		}}
 	}
 
 
