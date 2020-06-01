@@ -1,4 +1,3 @@
-
 <div class="container-fluid ">
     <h3>Realizar Transferencia</h3>
 
@@ -25,9 +24,8 @@
                     <div class="my-3 text-right">
                         <input type="submit" value="Enviar" class="btn btn-primary">
                     </div>
-                  
+
                 </div>
-</form>
+            </form>
         </div>
     </div>
-        

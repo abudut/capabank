@@ -74,19 +74,19 @@
 								<td> " . $user->getPhone() . " </td>
 								<td><form>  <select name='rol' id='rol' class='custom-select mr-sm'>
 								";
-	
+
 			if ($group == 1) {
 				echo "<option selected>Administrador</option>";
 			}
-			
+
 			if ($group == 2) {
 				echo "<option selected>Professional</option>";
 			}
-		
+
 			if ($group == 3) {
 				echo "<option selected>Cliente</option>";
 			}
-			
+
 			echo " </select></form> </td>
 								<td>";
 			if ($user->getActive() == 1) {
@@ -106,4 +106,3 @@
 	</table>
 	<a class="btn btn-primary" href="<?php echo base_url('users/add'); ?>">Agragar usuario</a>
 </div>
-

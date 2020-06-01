@@ -80,7 +80,6 @@
 				<th scope="col">Grupo</th>
 				<th scope="col">Estado</th>
 				<th scope="col">Accion</th>
-
 			</tr>
 		</thead>
 		<?php
@@ -101,19 +100,19 @@
 								<td> " . $user->getPhone() . " </td>
 								<td>  <select name='rol' id='rol' class='custom-select mr-sm' onChange='window.document.location.href='users/changeRole''>
 								";
-								if ($group == 1) {
-									echo "<option selected>Administrador</option>";
-								}
-								
-								if ($group == 2) {
-									echo "<option selected>Professional</option>";
-								}
-							
-								if ($group == 3) {
-									echo "<option selected>Cliente</option>";
-								}
-								
-								echo " </select></form> </td>
+			if ($group == 1) {
+				echo "<option selected>Administrador</option>";
+			}
+
+			if ($group == 2) {
+				echo "<option selected>Professional</option>";
+			}
+
+			if ($group == 3) {
+				echo "<option selected>Cliente</option>";
+			}
+
+			echo " </select></form> </td>
 													<td>";
 			if ($user->getActive() == 1) {
 				echo '<button class="btn btn-success user_status" uid="' . $user->getId() . '"  ustatus="' . $user->getActive() . '">Activo</button>';

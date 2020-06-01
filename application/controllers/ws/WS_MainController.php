@@ -94,4 +94,3 @@
             $this->response(NULL, RestController::HTTP_OK);
         }
     }
-?>

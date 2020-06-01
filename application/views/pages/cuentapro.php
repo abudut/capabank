@@ -1,6 +1,6 @@
 <div class="lead container-fluid">
 	<h3>Cuentas de clientes</h3>
-	
+
 
 	<table class="table table-striped">
 		<thead>
@@ -20,7 +20,7 @@
 								<td> " . $cuenta->getData() . " </td>
 								<td> " . $cuenta->getSou() . "€ </td>
 								<td> " . $cuenta->getEmail() . "</td>
-								<td> " . '<a href=" '. base_url() . 'cuentas/deleteCuenta/' . $cuenta->getIban() .'"><button class="btn btn-danger">Elimnar</button></a></td>' . "
+								<td> " . '<a href=" ' . base_url() . 'cuentas/deleteCuenta/' . $cuenta->getIban() . '"><button class="btn btn-danger">Elimnar</button></a></td>' . "
 							</tr>
 						";
 		}

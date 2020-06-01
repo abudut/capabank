@@ -14,5 +14,5 @@
 
 <body>
 	<header class="container-fluid">
-		<h1>CAPABANK</h1>	
+		<h1>CAPABANK</h1>
 	</header>

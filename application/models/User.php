@@ -151,7 +151,7 @@ class User extends CI_Model
 		return true;
 	}
 
-	public function updateUser($id, $user, $name, $surname, $email, $phone,$rol)
+	public function updateUser($id, $user, $name, $surname, $email, $phone, $rol)
 	{
 		$data = array(
 			'username' => $user,
